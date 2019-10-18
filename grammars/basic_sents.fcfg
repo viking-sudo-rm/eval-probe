@@ -1,0 +1,27 @@
+% start TP
+
+TP[SEM=<?p(?x)>] -> Name[SEM=?x] VP[SEM=?p]
+
+NP[SEM=?x] -> Name[SEM=?x]
+# TODO: Change the semantic type of ?i here.
+NP[SEM=<?i(?x)>] -> Name[SEM=?x] "'s" N[SEM=?i]
+
+VP[SEM=?p] -> V1[SEM=?p]
+VP[SEM=<?P(?x)>] -> V2[SEM=?P] Name[SEM=?x]
+VP[SEM=<\x.is(x, ?y)>] -> "is" NP[SEM=?y]
+
+################
+# Lexical Rules.
+################
+
+Name[SEM=<john>] -> "John"
+Name[SEM=<mary>] -> "Mary"
+
+N[SEM=<mother>] -> "mother"
+N[SEM=<father>] -> "father"
+
+V1[SEM=<cry>] -> "cries"
+V1[SEM=<run>] -> "runs"
+
+V2[SEM=<like>] -> "likes"
+V2[SEM=<watch>] -> "watches"
