@@ -40,10 +40,17 @@ def evaluate(expression: Expression, model_dict):
 
 
 def main():
+    """Skeleton towards a data generation process.
+
+    An actual data generation pipeline would:
+      1. Generate all basic sentences and throw them in train.
+      2. Generate all complex sentences, and divide between train/test.
+    """
+
     print("Basic grammar...")
-    grammar = load_grammar("grammars/basic_sents.fcfg")
-    sentences = tqdm(generate(grammar))
-    expressions = semantic_parse(sentences, grammar)
+    basic_grammar = load_grammar("grammars/basic_sents.fcfg")
+    sentences = tqdm(generate(basic_grammar))
+    expressions = semantic_parse(sentences, basic_grammar)
     for expression in expressions:
         value = evaluate(expression, model_dict)
         print(str(expression), ":", value)
