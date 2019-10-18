@@ -1,0 +1,11 @@
+Name[SEM=<john>] -> "John"
+Name[SEM=<mary>] -> "Mary"
+
+N[SEM=<mother>] -> "mother"
+N[SEM=<father>] -> "father"
+
+V1[SEM=<cry>] -> "cries"
+V1[SEM=<run>] -> "runs"
+
+V2[SEM=<like>] -> "likes"
+V2[SEM=<watch>] -> "watches"
