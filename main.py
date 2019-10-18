@@ -1,4 +1,5 @@
 from typing import List
+from tqdm import tqdm
 
 from nltk.grammar import FeatureGrammar
 from nltk.sem import interpret_sents
@@ -39,18 +40,22 @@ def evaluate(expression: Expression, model_dict):
 
 
 def main():
+    print("Basic grammar...")
     grammar = load_grammar("grammars/basic_sents.fcfg")
-    sentences = list(generate(grammar))
+    sentences = tqdm(generate(grammar))
     expressions = semantic_parse(sentences, grammar)
     for expression in expressions:
         value = evaluate(expression, model_dict)
         print(str(expression), ":", value)
 
+    print("Complex grammar...")
     complex_grammar = load_grammar("grammars/complex_sents.fcfg")
-    for sentence in generate(complex_grammar):
-        print(sentence)
-        # This grammar has infinite capacity.
-        break
+    sentences = tqdm(generate(complex_grammar, n=200, depth=5))
+    expressions = semantic_parse(sentences, complex_grammar)
+    for expression in expressions:
+        value = evaluate(expression, model_dict)
+        if value is not None:
+            print(str(expression), ":", value)
 
 
 if __name__ == "__main__":
